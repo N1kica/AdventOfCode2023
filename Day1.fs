@@ -2,23 +2,21 @@
 // cat input.txt | dotnet run Program.fs
 
 let rec find_number (line: string) index direction =
-    let rec loop i =
-        if i < 0 || i >= line.Length then 
-            None
-        else
-            match line.Substring(i) with
-            | c when System.Char.IsDigit(c.[0]) -> Some(c.[0])
-            | s when s.StartsWith "one" -> Some('1')
-            | s when s.StartsWith "two" -> Some('2')
-            | s when s.StartsWith "three" -> Some('3')
-            | s when s.StartsWith "four" -> Some('4')
-            | s when s.StartsWith "five" -> Some('5')
-            | s when s.StartsWith "six" -> Some('6')
-            | s when s.StartsWith "seven" -> Some('7')
-            | s when s.StartsWith "eight" -> Some('8')
-            | s when s.StartsWith "nine" -> Some('9')
-            | _ -> loop (i + direction)
-    loop index
+    if index < 0 || index >= line.Length then 
+        None
+    else
+        match line.Substring(index) with
+        | c when System.Char.IsDigit(c.[0]) -> Some(c.[0])
+        | s when s.StartsWith "one" -> Some('1')
+        | s when s.StartsWith "two" -> Some('2')
+        | s when s.StartsWith "three" -> Some('3')
+        | s when s.StartsWith "four" -> Some('4')
+        | s when s.StartsWith "five" -> Some('5')
+        | s when s.StartsWith "six" -> Some('6')
+        | s when s.StartsWith "seven" -> Some('7')
+        | s when s.StartsWith "eight" -> Some('8')
+        | s when s.StartsWith "nine" -> Some('9')
+        | _ -> find_number line (index + direction) direction
 
 let rec sum_lines sum = 
     match System.Console.ReadLine() with
