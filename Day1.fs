@@ -7,6 +7,7 @@ let rec find_number (line: string) index direction =
             None
         else
             match line.Substring(i) with
+            | c when System.Char.IsDigit(c.[0]) -> Some(c.[0])
             | s when s.StartsWith "one" -> Some('1')
             | s when s.StartsWith "two" -> Some('2')
             | s when s.StartsWith "three" -> Some('3')
@@ -16,7 +17,6 @@ let rec find_number (line: string) index direction =
             | s when s.StartsWith "seven" -> Some('7')
             | s when s.StartsWith "eight" -> Some('8')
             | s when s.StartsWith "nine" -> Some('9')
-            | c when System.Char.IsDigit(c.[0]) -> Some(c.[0])
             | _ -> loop (i + direction)
     loop index
 
