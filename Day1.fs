@@ -1,5 +1,5 @@
-// dotnet run Program.fs < input.txt
-// cat input.txt | dotnet run Program.fs
+// dotnet run < input.txt
+// cat input.txt | dotnet run
 
 let rec find_number (line: string) index direction =
     if index < 0 || index >= line.Length then 
@@ -34,8 +34,5 @@ let rec sum_lines sum =
 
         sum_lines sum + first_digit * 10 + last_digit
 
-[<EntryPoint>]
-let main arg =
-    let total_sum = sum_lines 0
-    printfn "Total sum: %d" total_sum
-    0
+let total_sum = sum_lines 0
+printfn "Total sum: %d" total_sum
