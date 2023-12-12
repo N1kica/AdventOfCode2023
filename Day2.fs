@@ -1,3 +1,5 @@
+// dotnet run < input.txt
+// cat input.txt | dotnet run
 
 let max_red = 12
 let max_green = 13
@@ -34,8 +36,5 @@ let rec sum_games sum =
         let round = get_rounds (line.Substring(line.IndexOf(':') + 2))
         sum_games sum + 1
 
-[<EntryPoint>]
-let main arg =
-    let total_sum = sum_games 0
-    printfn "Total sum: %d" total_sum
-    0
+let total_sum = sum_games 0
+printfn "Total sum: %d" total_sum
