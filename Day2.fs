@@ -13,23 +13,23 @@ let exceeds_max count color =
     | _ -> false
 
 let find_max count color red green blue =
+    let mutable max_red = red
+    let mutable max_green = green
+    let mutable max_blue = blue
+
     match color with
     | "red" -> 
-        if count > red then
-            (count, green, blue)
-        else
-            (red, green, blue)
+        if count > max_red then
+            max_red <- count
     | "green" -> 
-        if count > green then
-            (red, count, blue)
-        else
-            (red, green, blue)
+        if count > max_green then
+            max_green <- count
     | "blue" -> 
-        if count > blue then
-            (red, green, count)
-        else
-            (red, green, blue)
-    | _ -> (red, green, blue)
+        if count > max_blue then
+            max_blue <- count
+    | _ -> ()
+
+    (max_red, max_green, max_blue)
 
 let rec parse_round (input: string array) index sum game=
     match exceeds_max (int input.[index]) input.[index + 1] with
