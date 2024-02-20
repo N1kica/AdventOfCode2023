@@ -21,8 +21,8 @@ fn main() {
         }
     }
 
-    println!("Part 2 & 1: {:?}", points.iter().fold((0,0), |acc, &(x, y)| (acc.0 + x, match y {
+    println!("Part 1 & 2: {:?}", points.iter().fold((0,0), |acc, &(x, y)| (match y {
         0 => acc.1,
         count => (1 << count - 1) + acc.1
-    })));
+    }, acc.0 + x)));
 }
