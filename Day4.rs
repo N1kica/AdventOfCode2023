@@ -31,7 +31,7 @@ fn main() {
         .collect();
 
     for i in 0..points.len() {
-        for j in (i + 1)..(i + points[i].1 + 1).min(points.len()) {
+        for j in (i + 1)..(i + 1 + points[i].1).min(points.len()) {
             points[j].0 += points[i].0;
         }
     }
